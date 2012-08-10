@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<context xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://privatefunction.net/playground/di/xsd/core/"
+	xsi:schemaLocation="http://privatefunction.net/playground/di/xsd/core/ http://privatefunction.net/playground/di/xsd/core/core.xsd ">
+	
+	<factory>
+		
+		<object id="autoFireKeyDelay" class="com.cs.utils.input.AutoFireKeyDelay">
+			<method name="autoFireKeyDelay" arguments="ArrowUp,50"/>
+		</object>
+		
+		<object id="inputControl" class="com.cs.utils.input.Input">
+			<property name="dispatchMouse" value="true" />
+			<property name="dispatchClick" value="true" />
+			<property name="registerKeyEvent" value="Left"/>
+			<property name="registerKeyEvent" value="Right"/>
+			<property name="registerKeyEvent" value="Space"/>
+			<property name="registerKeyEvent" value="ArrowLeft"/>
+			<property name="registerKeyEvent" value="ArrowRight"/>
+			<property name="registerKeyEvent" value="ArrowUp"/>
+			<property name="registerKeyEvent" value="ArrowDown"/>
+			<property name="mouseHide" boolean="false" />
+			<property name="autoFireKeyDelay" id-ref="autoFireKeyDelay"/>
+		</object>
+		
+	</factory>
+</context>

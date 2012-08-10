@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message-bundle>
+	<message key="navigation.1"><![CDATA[<span class='navigation'>video test</span>]]></message>
+	<message key="navigation.2"><![CDATA[<span class='navigation'>form test</span>]]></message>
+	<message key="navigation.3"><![CDATA[<span class='navigation'>mp3 test</span>]]></message>
+	<message key="navigation.4"><![CDATA[<span class='navigation'>gallery test</span>]]></message>
+	<message key="navigation.5"><![CDATA[<span class='navigation'>suspend test</span>]]></message>
+	<message key="navigation.6"><![CDATA[<span class='navigation'>zip file test</span>]]></message>
+</message-bundle>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<context xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://privatefunction.net/playground/di/xsd/core/"
+	xsi:schemaLocation="http://privatefunction.net/playground/di/xsd/core/ http://privatefunction.net/playground/di/xsd/core/core.xsd ">
+	
+	<factory>
+		
+		<!-- 
+			Simple Class without any Function need for injection via ref attribute 
+		-->
+		
+		<object id="simpleReferenceById" class="cs.unit.test.examples.ExampleSimpleReferenceById"/> 
+		
+		<!-- 
+			id:identifier for this object(Context.getObject(id))
+			class: Class Name for creation
+			ref: Object Reference Injection (exampleObject.simpleReference is called)
+			initMethod: Called after parsing, injecting and loading is complete
+			lifetime: set to expire this object will be killed if new context is created
+			
+			call Context.getObject(id) if you need a created Instance (ScreenView or Navigation)
+		-->
+		
+		<object id="exampleObject" class="cs.unit.test.examples.ExampleObject" ref="simpleReferenceById" initMethod="initExampleObject" lifetime="expire"/> 
+	
+	</factory>
+</context>

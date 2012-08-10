@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified"
+    xmlns="http://privatefunction.net/playground/di/xsd/log/"
+    xmlns:tns="http://privatefunction.net/playground/di/xsd/log/"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://privatefunction.net/playground/di/xsd/log/">
+	
+	 <xs:element name="object">
+        <xs:complexType>
+        	<xs:choice minOccurs="0" maxOccurs="unbounded">
+        		<xs:element name="log" type="target"/>
+        	</xs:choice>
+            <xs:attribute name="id" type="xs:token" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:complexType name="target">
+        <xs:attribute name="name" type="xs:token" use="required"/>
+        <xs:attribute name="level" type="level" use="required"/>
+    </xs:complexType>
+    
+    <xs:simpleType name="level">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="off"/>
+            <xs:enumeration value="trace"/>
+            <xs:enumeration value="debug"/>
+            <xs:enumeration value="info"/>
+            <xs:enumeration value="warn"/>
+            <xs:enumeration value="error"/>
+            <xs:enumeration value="fatal"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+</xs:schema>

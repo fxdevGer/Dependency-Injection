@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<project name="compile swc, swc and docs">
+
+	<property file="build.properties" />
+
+	<target name="compile_utils_swc">
+		<exec executable="${compc.exe}" failonerror="true" logError="true" error="${basedir}/script-error/antError.txt">
+			<arg line="-o '${swcFolder.dir}/${utilsSWCFile}'" />
+			<arg line="-sp ${utilsClassesFolder.dir}" />
+			<arg line="-sp ${classesFolder.dir}" />
+			<arg line="-is ${utilsClassesFolder.dir}" />
+		</exec>
+		<echo>${swcFile} successfuly compiled</echo>
+	</target>
+
+	<target name="compile_core_swc">
+		<exec executable="${compc.exe}" failonerror="true" logError="true" error="${basedir}/script-error/antError.txt">
+			<arg line="-o '${swcFolder.dir}/${coreSWCFile}'" />
+			<arg line="-sp ${classesFolder.dir}" />
+			<arg line="-sp ${utilsClassesFolder.dir}" />
+			<arg line="-is ${classesFolder.dir}" />
+		</exec>
+		<echo>${swcFile} successfuly compiled</echo>
+	</target>
+
+	<target name="compile_swf">
+		<fdt.launch.application projectname="DependencyInjection" compilerarguments="${args}" mainclass="${mainClass}" debug="false" target="${mainFile}" startswf="false" />
+		<echo>${mainFile} successfuly compiled</echo>
+	</target>
+
+	<target name="deploy swc documentation update">
+		<exec executable="${asdoc.exe}" failonerror="true" logError="true" error="${basedir}/script-error/antError.txt">
+			<arg line="-source-path ${classesFolder.dir}" />
+			<arg line="-lenient=true" />
+			<arg line="-keep-xml=true" />
+			<arg line="-skip-xsl=true" />
+			<arg line="-window-title 'CS Core Injection API'" />
+			<arg line="-output ${docsFolder.dir}" />
+		</exec>
+		<echo>docs successfuly created in ${docsFolder.dir}</echo>
+	</target>
+
+	<target name="update swc" depends="deploy swc documentation update">
+		<zip destfile="${swcFolder.dir}/${swcFile}" update="true">
+			<zipfileset dir="${docsFolder.dir}/tempdita" prefix="docs">
+				<include name="*.*" />
+				<exclude name="ASDoc_Config.xml" />
+				<exclude name="overviews.xml" />
+			</zipfileset>
+		</zip>
+
+		<antcall target="clean docs folder" />
+
+	</target>
+
+	<target name="deploy core swc documentation html">
+		<exec executable="${asdoc.exe}" failonerror="true" logError="true" error="${basedir}/script-error/antError.txt">
+			<arg line="-doc-sources ${classesFolder.dir} ${utilsClassesFolder.dir}" />
+			<arg line="-window-title 'CS Core Injection API'" />
+			<arg line="-output ${docsFolder.dir}" />
+		</exec>
+
+		<antcall target="compile core docs zip" />
+		<antcall target="clean docs folder" />
+
+		<echo>docs successfuly created in ${docsFolder.dir}</echo>
+	</target>
+
+	<target name="compile core docs zip">
+		<zip destfile="${docsFolder.dir}/../${docsCoreZipFile}" basedir="${docsFolder.dir}" excludes="**/.svn" />
+		<echo>doc ${docsCoreZipFile} zip file created</echo>
+	</target>
+
+	<target name="clean docs folder">
+		<delete includeemptydirs="true">
+			<fileset dir="${docsFolder.dir}">
+				<include name="**/*" />
+			</fileset>
+		</delete>
+		<echo>${docsFolder.dir} deleted</echo>
+	</target>
+
+</project>

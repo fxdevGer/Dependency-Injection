@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<context xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://privatefunction.net/playground/di/xsd/core/"
+	xsi:schemaLocation="http://privatefunction.net/playground/di/xsd/core/ http://privatefunction.net/playground/di/xsd/core/core.xsd ">
+	
+	<factory>
+		<object id="simpleReferenceById" class="cs.unit.test.examples.ExampleSimpleReferenceById"/> <!-- Simple Class without any Function need for injection via id-ref as property -->
+		
+		<!-- 
+			name: defines the name of the Method which will be called
+			value: defines the value that is passed through the Method
+			id-ref: defines a Reference by Id
+			value-ref: defines values from id-ref
+		 -->
+		
+		<object id="exampleMethods" class="cs.unit.test.examples.ExampleMethods" childsInjection="afterLoading">
+			<method name="simpleMethod"/>																	<!-- calls Method simpleMethod in ExampleMethods -->
+			<method name="simpleMethodWithArguments" arguments="1,10"/>																	<!-- calls Method simpleMethod in ExampleMethods -->
+			<method name="simpleMethodForIdRef" id-ref="simpleReferenceById"/>								<!-- calls Method simpleMethodForIdRef with argument simpleReferenceById -->
+			<method name="simpleMethodForValueRef" id-ref="simpleReferenceById" value-ref="simpleValue"/>	<!-- calls Method simpleMethodForIdRef with argument simpleReferenceById.simpleValue -->
+			<method name="multiMethodForValueRef" id-ref="simpleReferenceById" value-ref="simpleValue, object, array, vector"/>	 <!-- calls Method simpleMethodForIdRef with arguments -->
+			<method id-ref="exampleMethods" value-ref="returnsimpleMethodForIdRef" name="scaleMethod" value=".3"/> 				 <!-- calls setter exampleMethods.returnsimpleMethodForIdRef.scaleMethod(value) -->
+			<method name="testForArguments" id-ref="simpleReferenceById" value-ref="object" arguments="100, 200"/> 				 <!-- calls setter exampleMethods.testForArguments(value-ref, arguments) -->
+			<method name="testForArguments2" id-ref="simpleReferenceById" arguments="100, 200"/> 				 <!-- calls setter exampleMethods.testForArguments(value-ref, arguments) -->
+		</object>
+	</factory>
+</context>

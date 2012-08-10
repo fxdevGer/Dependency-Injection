@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message-bundle>
+	<message key="form.1"><![CDATA[<span class='formLabels'>titre*</span>]]></message>
+	<message key="form.2"><![CDATA[<span class='formLabels'>nom*</span>]]></message>
+	<message key="form.3"><![CDATA[<span class='formLabels'>nom de famille*</span>]]></message>
+	<message key="form.4"><![CDATA[<span class='formLabels'>anniversaire*</span>]]></message>
+	<message key="form.5"><![CDATA[<span class='formLabels'>émail*</span>]]></message>
+	<message key="form.6"><![CDATA[<span class='formLabels'>cellulaire</span>]]></message>
+	<message key="form.7"><![CDATA[<span class='formLabels'>rue/nr*</span>]]></message>
+	<message key="form.8"><![CDATA[<span class='formLabels'>code postal/cité*</span>]]></message>
+	<message key="form.9"><![CDATA[<span class='formLabels'>vérifier</span>]]></message>
+	<message key="form.10"><![CDATA[<span class='formLabels'>ouvrir le formulaire</span>]]></message>
+	<message key="form.11"><![CDATA[<span class='formLabels'>arrêter le formulaire</span>]]></message>
+</message-bundle>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<context xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:object="http://privatefunction.net/playground/di/xsd/log/" xmlns:logger="http://privatefunction.net/playground/di/xsd/log/" 
+xmlns="http://privatefunction.net/playground/di/xsd/core/" 
+xsi:schemaLocation="http://privatefunction.net/playground/di/xsd/log/ 
+http://privatefunction.net/playground/di/xsd/core/core.xsd 
+http://privatefunction.net/playground/di/xsd/log/ 
+http://privatefunction.net/playground/di/xsd/log/log.xsd">
+
+	<!--
+	The Logger Node. You can log every package with a logger node in your Context.
+	Class com.cs.di.core.logger.core.LoggerSocket is the base XML Socket class that is injected.
+	In the log node name is the package name you want to log. Level is the log level such as:
+	TRACE (Level 1), DEBUG (Level 2),INFO (Level 3), WARN (Level 4), ERROR (Level 5), FATAL (Level 6) or OFF (Level 7).
+	
+	To get a logger in your class just type :
+	
+	private static const log : Logger = LogContext.getLogger(getQualifiedClassName(ClassName));
+	
+	-->
+	
+	<object:logger id="logging">
+		<logger:log name="com.cs.di.core" level="off"/>
+		<logger:log name="com.cs.di.core.context" level="off"/>
+		<logger:log name="com.cs.di.core.context.impl" level="off"/>
+		<logger:log name="com.cs.di.core.loader" level="off"/>
+		<logger:log name="com.cs.di.core.loader.impl" level="off"/>
+		<logger:log name="com.cs.di.core.loader.core" level="off"/>
+		<logger:log name="com.cs.di.core.loader.core.monitor" level="off"/>
+		<logger:log name="com.cs.di.core.loader.core.types" level="off"/>
+		<logger:log name="com.cs.di.core.mvc" level="off"/>
+		<logger:log name="com.cs.di.core.localization" level="off"/>
+		<logger:log name="com.cs.di.core.localization.core" level="off"/>
+		<logger:log name="com.cs.di.core.localization.impl" level="off"/>
+		<logger:log name="com.cs.di.core.xml" level="trace"/>
+		<logger:log name="com.cs.di.core.xml.processing" level="trace"/>
+		<logger:log name="com.cs.di.core.xml.processing.impl" level="trace"/>
+		<logger:log name="com.cs.di.core.utils" level="off"/>
+		<logger:log name="com.cs.di.core.utils.input" level="trace"/>
+		
+		<logger:log name="cs.unit.test" level="trace"/>
+		<logger:log name="cs.unit.test.screens" level="off"/>
+		<logger:log name="cs.unit.test.screens.event" level="off"/>
+		<logger:log name="cs.unit.test.screens.interceptor" level="off"/>
+		<logger:log name="cs.unit.test.screens.models" level="off"/>
+		<logger:log name="cs.unit.test.screens.navigation" level="off"/>
+		<logger:log name="cs.unit.test.screens.types" level="off"/>
+		<logger:log name="cs.unit.test.screens.utils" level="off"/>
+		
+		<logger:log name="cs.unit.test.examples" level="trace"/>
+		
+	</object:logger>
+
+</context>

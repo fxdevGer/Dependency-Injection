@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<context xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://privatefunction.net/playground/di/xsd/core/"
+	xsi:schemaLocation="http://privatefunction.net/playground/di/xsd/core/ http://privatefunction.net/playground/di/xsd/core/core.xsd ">
+
+	<factory>
+	
+		<!-- 
+			Simple Class without any Function need for injection via id-ref at constructor-args 
+		-->
+		<object id="simpleReferenceById" class="cs.unit.test.examples.ExampleSimpleReferenceById"/> 
+		
+		<!-- 
+			Class that will be created and injected with constructor - args 
+			Important only 8 values are allowed
+		-->
+		
+		<object id="constructor-argsExample" class="cs.unit.test.examples.ExampleConstructorArgs">	
+			<constructor-args>													
+				<boolean>false</boolean>															<!-- Simple Boolean -->
+				<number>300</number>																<!-- Simple Number -->
+				<int>-987654321</int>																<!-- Simple int -->
+				<uint>123456789</uint>																<!-- Simple unit -->
+				<string>Hallo ich bin ein Constructor String</string>								<!-- Simple String -->
+				
+				<array>																				<!-- Complex Type Array -->
+					<boolean>false</boolean>
+					<number>300</number>
+					<int>-987654321</int>
+					<uint>123456789</uint>
+					<string>Hallo ich bin ein Constructor String</string>
+				</array>
+				
+				<date>2011-7-26 12:00:00</date>														<!-- Simple Date -->
+				<!-- <id-ref>simpleReferenceById.vector</id-ref> -->								<!-- Simple Reference, dot Operator Hack :D-->
+				<vector3D>0,100,200</vector3D>
+			</constructor-args>
+		</object>
+	</factory>
+</context>

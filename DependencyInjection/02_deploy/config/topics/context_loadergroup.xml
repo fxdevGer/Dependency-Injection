@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<context xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://privatefunction.net/playground/di/xsd/core/"
+	xsi:schemaLocation="http://privatefunction.net/playground/di/xsd/core/ http://privatefunction.net/playground/di/xsd/core/core.xsd ">
+	
+	<factory>
+	
+		<!--
+			id:identifier for this object, 
+			class: Class Name for creation, 
+			lifetime:object will be killed 
+			
+			if groupState == suspend you can call
+			
+			Context.fileLoader.addEventListener(Event.COMPLETE, handleLoadingComplete);
+			Context.fileLoader.loadByGroupName("exampleLoaderGroup");
+			
+		-->
+	
+		<object id="exampleLoaderGroup" class="cs.unit.test.examples.ExampleLoaderGroup" lifetime="expire">		
+			<!-- <loaderGroup id="exampleLoaderGroup" groupState="active" groupLoad="sequential" groupCache="on">	id:identifier for this object, groupState:active or suspend, groupLoad:sequential or altogether, groupCache:on or off
+				<loaderTask method="addImage">																	method:Method name for injection of loaded Content at Object
+					<array>media/images/0.jpg</array>
+					<array>media/images/1.jpg</array>
+					<array>media/images/2.jpg</array>
+					<array>media/images/3.jpg</array>
+					<array>media/images/4.jpg</array>
+					<array>media/images/5.jpg</array>
+					<array>media/images/cubeTexture.png</array>
+					<array>media/images/texture_008.jpg</array>
+				</loaderTask>
+			</loaderGroup> -->
+			<!-- <loaderGroup id="exampleLoaderGroup" groupState="active" groupLoad="sequential" groupCache="on">
+				<loaderTask method="addShader">
+					<array>media/shader/pixelate.pbj</array>
+					<array>media/shader/reflectioneffect.pbj</array>
+				</loaderTask>
+			</loaderGroup> -->
+			<!-- <loaderGroup id="exampleLoaderGroup" groupState="active" groupLoad="sequential" groupCache="on">
+				<loaderTask method="addObjModel">
+					<array>media/models/car.md5mesh</array>
+				</loaderTask>
+			</loaderGroup> -->
+			<loaderGroup id="exampleLoaderGroup" groupState="active" groupLoad="sequential" groupCache="on">
+				<loaderTask method="add3dsModel">
+					<array>media/models/f360.3ds</array>
+				</loaderTask>
+			</loaderGroup>
+			<loaderGroup id="exampleLoaderGroup" groupState="active" groupLoad="sequential" groupCache="on">
+				<loaderTask method="addAWDModel">
+					<array>media/models/konservendose.awd</array>
+				</loaderTask>
+			</loaderGroup>
+		</object>
+	</factory>
+
+</context>

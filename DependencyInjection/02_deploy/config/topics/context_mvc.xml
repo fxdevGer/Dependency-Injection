@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<context xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://privatefunction.net/playground/di/xsd/core/" xmlns:mvc="http://privatefunction.net/playground/di/xsd/mvc/"
+	xsi:schemaLocation="http://privatefunction.net/playground/di/xsd/core/ http://privatefunction.net/playground/di/xsd/core/core.xsd http://privatefunction.net/playground/di/xsd/mvc/ http://privatefunction.net/playground/di/xsd/mvc/mvc.xsd ">
+	
+	<factory>
+	
+		<!-- 
+			event-name: Name of the Event
+			event-class: Class which will be injected
+			method: called if Event is dispatched
+		
+			call: FrontController.root().dispatchEvent(new ExampleMVCEvent(ExampleMVCEvent.SIMPLE_EVENT));
+		
+		 -->
+	
+		<object id="exampleMVC" class="cs.unit.test.examples.ExampleMVC" initMethod="start">
+			<mvc:action event-name="SIMPLE_EVENT" event-class="cs.unit.test.examples.ExampleMVCEvent" method="onSimpleEvent" />
+		</object>
+	</factory>
+</context>

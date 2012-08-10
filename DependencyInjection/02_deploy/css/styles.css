@@ -1,0 +1,35 @@
+.navigation {
+	font-family: Helvetica;
+	font-size: 14px;
+	color: #000000;
+}
+
+.imageCopy {
+	font-family: Helvetica;
+	font-size: 20px;
+	color: #ffffff;
+}
+
+.formLabels {
+	font-family: Helvetica;
+	font-size: 14px;
+	color: #000000;
+}
+
+.formInput {
+	font-family: Helvetica;
+	font-size: 20px;
+	color: #ffcc00;
+}
+
+.mp3Info {
+	font-family: Helvetica;
+	font-size: 10px;
+	color: #000000;
+}
+
+.small {
+	font-family: Helvetica;
+	font-size: 10px;
+	color: #000000;
+}

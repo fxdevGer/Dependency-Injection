@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<context xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://privatefunction.net/playground/di/xsd/core/" xmlns:mvc="http://privatefunction.net/playground/di/xsd/mvc/"
+	xsi:schemaLocation="http://privatefunction.net/playground/di/xsd/core/ http://privatefunction.net/playground/di/xsd/core/core.xsd http://privatefunction.net/playground/di/xsd/mvc/ http://privatefunction.net/playground/di/xsd/mvc/mvc.xsd ">
+	
+	<localization>
+		<localeManager>
+			<defaultLocale language="de" country="germany" ignoreCountry="true" />
+			<locale language="en" country="great britain" ignoreCountry="true" />
+			<locale language="fr" country="france" ignoreCountry="true" />
+		</localeManager>
+		 
+		<messageSource id="messages" groupState="active" groupLoad="altogether" groupCache="on">
+			<messageBundle id="navigation" basename="messages/navigation/navigation" />
+			<messageBundle id="description" basename="messages/description/description" />
+			<messageBundle id="form" basename="messages/form/form" />
+		</messageSource>
+	</localization>
+	<factory>
+		<object id="libs">
+			<loaderGroup id="libs" groupState="active" groupLoad="altogether" groupCache="on">
+				<loaderTask>
+					<array>media/swf/gfx.swf</array>
+					<array>css/styles.css</array>
+				</loaderTask>
+			</loaderGroup>
+		</object>
+	
+		<object id="galleryScreen" class="cs.unit.test.screens.types.GalleryScreen">
+			<mediaTask method="addContexts">
+				<array>config/context_gallery.xml</array>
+			</mediaTask>
+			<property name="modelString" value="galleryModel" />
+			<property name="id" value="galleryScreen" />
+		</object>
+		
+		<object id="videoModel" class="cs.unit.test.screens.models.VideoModel">
+			<mediaTask method="addVideoPath">
+				<array>media/mp4/boxplus.mp4</array>
+				<array>media/mp4/boxplus.mp4</array>
+				<array>media/mp4/boxplus.mp4</array>
+				<array>media/mp4/boxplus.mp4</array>
+			</mediaTask>
+		</object>
+		
+		<object id="videoScreen" class="cs.unit.test.screens.types.VideoScreen" ref="videoModel" initMethod="initVideoPlayer">
+			<property name="id" value="videoScreen" />
+		</object>
+		
+		<object id="formScreen" class="cs.unit.test.screens.types.FormScreen" initMethod="initForm">
+			<constructor-args>
+				<string>Formular</string>				
+				<string>http://www.google.de/</string>
+			</constructor-args>
+			<mediaTask method="addContexts">
+				<array>context/context_form.xml</array>
+			</mediaTask>
+			<property name="id" value="formScreen" />
+		</object>
+		
+		<object id="mp3Model" class="cs.unit.test.screens.models.MP3Model">
+			<loaderGroup id="mp3Model" groupState="active" groupLoad="altogether" groupCache="on">
+				<loaderTask method="addMusic">
+					<array>media/mp3/jazz.mp3</array>
+					<array>media/mp3/sound1.mp3</array>
+				</loaderTask>
+			</loaderGroup>
+			<mediaTask method="addMP3Path">
+				<array>media/mp3/sound1.mp3</array>
+				<array>media/mp3/sound2.mp3</array>
+				<array>media/mp3/sound3.mp3</array>
+			</mediaTask>
+		</object>
+		
+		<object id="mp3Screen" class="cs.unit.test.screens.types.MP3Screen" ref="mp3Model" initMethod="initSoundPlayer">
+			<constructor-args>
+				<string>MP3BG</string>
+			</constructor-args>
+			<property name="id" value="mp3Screen" />
+		</object>
+		
+		<object id="suspendModel" class="cs.unit.test.screens.models.SuspendModel">
+			<loaderGroup id="suspendModel" groupState="suspend" groupLoad="altogether" groupCache="off">
+				<loaderTask method="addImage">
+					<array>media/images/0.jpg</array>
+					<array>media/images/1.jpg</array>
+					<array>media/images/2.jpg</array>
+					<array>media/images/3.jpg</array>
+					<array>media/images/4.jpg</array>
+					<array>media/images/5.jpg</array>
+				</loaderTask>
+			</loaderGroup>
+		</object>
+		
+		<object id="suspendScreen" class="cs.unit.test.screens.types.SuspendScreen" ref="suspendModel">
+			<property name="id" value="suspendScreen" />
+		</object>
+		
+		<object id="language" class="cs.unit.test.screens.types.Language" initMethod="initLanguage">
+			<constructor-args>
+				<string>Language</string>
+			</constructor-args>
+		</object>
+		
+		<object id="screenModel" class="cs.unit.test.screens.models.ScreenModel">
+			<property name="registerScreen" id-ref="videoScreen" /> 
+			<property name="registerScreen" id-ref="formScreen" />
+			<property name="registerScreen" id-ref="mp3Screen" /> 
+			<property name="registerScreen" id-ref="galleryScreen" />
+			<property name="registerScreen" id-ref="suspendScreen" /> 
+		</object>
+		
+		<object id="navigation" class="cs.unit.test.screens.navigation.Navigation" ref="screenModel" initMethod="initNavigation">
+		 	<constructor-args>
+				<int>5</int>
+			</constructor-args>
+			<mvc:action event-name="PERFORM_LANGUAGE_CHANGE" event-class="cs.unit.test.screens.event.ScreenEvent" method="onChangeLanguage" />
+		</object>
+		
+		<object id="screenController" class="cs.unit.test.screens.ScreenController" ref="screenModel">
+			<mvc:action event-name="REQUEST_CHANGE" event-class="cs.unit.test.screens.event.ScreenEvent" method="onChangeScreenRequest" />
+			<mvc:action event-name="REQUEST_LANGUAGE_CHANGE" event-class="cs.unit.test.screens.event.ScreenEvent" method="onChangeLanguageRequest" />
+		</object>
+
+		<object id="screenView" class="cs.unit.test.screens.ScreenView" ref="screenModel"> <!--  -->
+			<mvc:action event-name="PERFORM_CHANGE" event-class="cs.unit.test.screens.event.ScreenEvent" method="onChangeScreen" />
+			<mvc:action event-name="PERFORM_LANGUAGE_CHANGE" event-class="cs.unit.test.screens.event.ScreenEvent" method="onChangeLanguage" />
+		</object>
+
+	</factory>
+</context>

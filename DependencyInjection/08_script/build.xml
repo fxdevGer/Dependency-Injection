@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- ====================================================================== 
+     1.October 2010
+
+     project: 		Dependency Injection
+                   
+     (c) Christian Sobolewski                                               
+     ====================================================================== -->
+<project name="DependencyInjection" default="all">
+
+	<property file="build.properties" />
+
+	<target name="all">
+		<ant antfile="compile.xml" target="compile_swf" />
+		<ant antfile="compile.xml" target="compile_swc" />
+		<ant antfile="compile.xml" target="deploy documentation" />
+
+		<ant antfile="ftpdeploy.xml" target="all" />
+	</target>
+
+</project>
+

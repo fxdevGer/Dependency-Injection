@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<project name="ftp deploy">
+
+	<property file="build.properties" />
+
+	<target name="all">
+		<ant antfile="compile.xml" target="compile_swf" />
+		<antcall target="ftp_binary" />
+		<antcall target="ftp_config" />
+		<antcall target="ftp_css" />
+		<antcall target="ftp_images" />
+		<antcall target="ftp_js" />
+		<antcall target="ftp_mp3" />
+		<antcall target="ftp_mp4" />
+		<antcall target="ftp_messages" />
+		<antcall target="ftp_shader" />
+		<antcall target="ftp_swf" />
+		<antcall target="xsd_core_ftp" />
+		<antcall target="xsd_log_ftp" />
+		<antcall target="xsd_mvc_ftp" />
+	</target>
+
+	<target name="ftp_binary">
+		<ftp server="${serverURL}" port="${serverPORT}" remotedir="${remoteDIR}" userid="${userID}" password="${passID}" passive="yes" depends="yes">
+			<fileset dir="${projectPath}/../02_deploy">
+				<include name="*.html" />
+				<include name="*.swf" />
+			</fileset>
+		</ftp>
+	</target>
+
+	<target name="ftp_js">
+		<ftp server="${serverURL}" port="${serverPORT}" remotedir="${remoteDIR}/js" userid="${userID}" password="${passID}" passive="yes" depends="yes">
+			<fileset dir="${projectPath}/../02_deploy/js">
+				<include name="*.js" />
+			</fileset>
+		</ftp>
+	</target>
+
+	<target name="ftp_config">
+		<ftp server="${serverURL}" port="${serverPORT}" remotedir="${remoteDIR}/config" userid="${userID}" password="${passID}" passive="yes" depends="yes">
+			<fileset dir="${projectPath}/../02_deploy/config">
+				<include name="*.xml" />
+			</fileset>
+		</ftp>
+	</target>
+
+	<target name="ftp_css">
+		<ftp server="${serverURL}" port="${serverPORT}" remotedir="${remoteDIR}/css" userid="${userID}" password="${passID}" passive="yes" depends="yes">
+			<fileset dir="${projectPath}/../02_deploy/css">
+				<include name="*.css" />
+			</fileset>
+		</ftp>
+	</target>
+
+	<target name="ftp_images">
+		<ftp server="${serverURL}" port="${serverPORT}" remotedir="${remoteDIR}/media/images" userid="${userID}" password="${passID}" passive="yes" depends="yes">
+			<fileset dir="${projectPath}/../02_deploy/media/images">
+				<include name="*.jpg" />
+			</fileset>
+		</ftp>
+	</target>
+
+	<target name="ftp_mp3">
+		<ftp server="${serverURL}" port="${serverPORT}" remotedir="${remoteDIR}/media/mp3" userid="${userID}" password="${passID}" passive="yes" depends="yes">
+			<fileset dir="${projectPath}/../02_deploy/media/mp3">
+				<include name="*.mp3" />
+			</fileset>
+		</ftp>
+	</target>
+	
+	<target name="ftp_mp4">
+			<ftp server="${serverURL}" port="${serverPORT}" remotedir="${remoteDIR}/media/mp4" userid="${userID}" password="${passID}" passive="yes" depends="yes">
+				<fileset dir="${projectPath}/../02_deploy/media/mp4">
+					<include name="*.mp4" />
+				</fileset>
+			</ftp>
+		</target>
+
+	<target name="ftp_messages">
+		<ftp server="${serverURL}" port="${serverPORT}" remotedir="${remoteDIR}/messages" userid="${userID}" password="${passID}" passive="yes" depends="yes">
+			<fileset dir="${projectPath}/../02_deploy/messages">
+				<include name="*.xml" />
+			</fileset>
+		</ftp>
+	</target>
+
+	<target name="ftp_shader">
+		<ftp server="${serverURL}" port="${serverPORT}" remotedir="${remoteDIR}/media/shader" userid="${userID}" password="${passID}" passive="yes" depends="yes">
+			<fileset dir="${projectPath}/../02_deploy/media/shader">
+				<include name="*.pbj" />
+			</fileset>
+		</ftp>
+	</target>
+
+	<target name="ftp_swf">
+		<ftp server="${serverURL}" port="${serverPORT}" remotedir="${remoteDIR}/media/swf" userid="${userID}" password="${passID}" passive="yes" depends="yes">
+			<fileset dir="${projectPath}/../02_deploy/media/swf">
+				<include name="*.swf" />
+			</fileset>
+		</ftp>
+	</target>
+
+	<target name="xsd_core_ftp">
+		<ftp server="${serverURL}" port="${serverPORT}" remotedir="${remoteDIR}/xsd/core" userid="${userID}" password="${passID}" passive="yes" depends="yes">
+			<fileset dir="${projectPath}/../09_xsd/core">
+				<include name="*.xsd" />
+			</fileset>
+		</ftp>
+	</target>
+	
+	<target name="xsd_log_ftp">
+		<ftp server="${serverURL}" port="${serverPORT}" remotedir="${remoteDIR}/xsd/log" userid="${userID}" password="${passID}" passive="yes" depends="yes">
+			<fileset dir="${projectPath}/../09_xsd/log">
+				<include name="*.xsd" />
+			</fileset>
+		</ftp>
+	</target>
+
+	<target name="xsd_mvc_ftp">
+		<ftp server="${serverURL}" port="${serverPORT}" remotedir="${remoteDIR}/xsd/mvc" userid="${userID}" password="${passID}" passive="yes" depends="yes">
+			<fileset dir="${projectPath}/../09_xsd/mvc">
+				<include name="*.xsd" />
+			</fileset>
+		</ftp>
+	</target>
+
+</project>

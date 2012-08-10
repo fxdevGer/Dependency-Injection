@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<context xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://privatefunction.net/playground/di/xsd/core/"
+	xsi:schemaLocation="http://privatefunction.net/playground/di/xsd/core/ http://privatefunction.net/playground/di/xsd/core/core.xsd ">
+	
+	<factory>
+		<object id="simpleReferenceById" class="cs.unit.test.examples.ExampleSimpleReferenceById"/> <!-- Simple Class without any Function need for injection via id-ref as property -->
+		
+		<!-- 
+			name: defines the name of the setter which will be called
+			value: defines the value that is passed through the setter
+			id-ref: defines a Reference by Id
+			value-ref: defines a value from id-ref
+		 -->
+		
+		<!-- calls setter booleanTest and injects true or false. Note this just works only in simple Mode (name and boolean attribute) -->
+		
+		<object id="exampleProperties" class="cs.unit.test.examples.ExampleProperties">
+			<property name="booleanTest" boolean="false"/>
+		</object>
+		
+		<!-- calls setter position and injects a new Vector3D(100,100,100) -->
+		<!-- calls setter id and injects its value to property -->
+		<!-- calls setter idRef and injects Object simpleReferenceById -->
+		<!-- calls setter valueRef and injects simpleValue from simpleReferenceById-->
+		<!-- calls setter exampleProperties.idRef.scale = value  -->
+		<!-- calls setter specularMap = simpleReferenceById.materials[10]  -->
+		
+		<!-- <object id="exampleProperties" class="cs.unit.test.examples.ExampleProperties">
+			<vector3D name="position" value="100,100,100"/>												
+			<property name="id" value="property"/>														
+			<property name="idRef" id-ref="simpleReferenceById"/> 							 			
+			<property name="valueRef" id-ref="simpleReferenceById" value-ref="simpleValue"/>			
+			<property id-ref="exampleProperties" value-ref="idRef" name="scale" value=".3"/> 			
+			<property name="specularMap" id-ref="simpleReferenceById" value-ref="materials" value="[10]"/>
+		</object> -->
+		
+		<!-- childsInjection means that each vector3D, property and method will be injected after all files has been loaded. Only afterLoading is allowed default is at runtime -->
+		<!-- calls setter position and injects a new Vector3D(100,100,100) -->
+		<!-- calls setter id and injects its value to property -->
+		<!-- calls setter idRef and injects Object simpleReferenceById -->
+		<!-- calls setter valueRef and injects simpleValue from simpleReferenceById -->
+		<!-- calls setter exampleProperties.idRef.scale = value -->
+		
+		<!-- <object id="exampleProperties2" class="cs.unit.test.examples.ExampleProperties" childsInjection="afterLoading">	
+			<vector3D name="position" value="100,100,100"/>												
+			<property name="id" value="property"/>														
+			<property name="idRef" id-ref="simpleReferenceById"/> 							 			
+			<property name="valueRef" id-ref="simpleReferenceById" value-ref="simpleValue"/>			
+			<property id-ref="exampleProperties" value-ref="idRef" name="scale" value=".3"/> 			
+		</object> -->
+		
+	</factory>
+</context>

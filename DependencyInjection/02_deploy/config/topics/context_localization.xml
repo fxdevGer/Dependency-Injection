@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<context xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://privatefunction.net/playground/di/xsd/core/"
+	xsi:schemaLocation="http://privatefunction.net/playground/di/xsd/core/ http://privatefunction.net/playground/di/xsd/core/core.xsd ">
+	
+	<localization>
+		<localeManager>
+			<defaultLocale language="de" country="germany" ignoreCountry="true" />	<!-- sets the defaultLocale to de -->
+			<locale language="en" country="great britain" ignoreCountry="true" />	<!-- you can define as many locale you need -->
+			<locale language="fr" country="france" ignoreCountry="true" />
+		</localeManager>
+		 
+		<messageSource id="messages" groupState="active" groupLoad="altogether" groupCache="on">	<!-- id:identifier for this object, groupState:active or suspend, groupLoad:sequential or altogether, groupCache:on or off-->
+			<messageBundle id="navigation" basename="messages/navigation/navigation" />				<!-- define as many messageBundles you need for each locale -->
+			<messageBundle id="description" basename="messages/description/description" />
+			<messageBundle id="form" basename="messages/form/form" />
+		</messageSource>
+	</localization>
+	
+	<factory/>
+	
+</context>

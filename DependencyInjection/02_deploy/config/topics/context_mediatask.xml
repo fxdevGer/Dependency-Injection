@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<context xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://privatefunction.net/playground/di/xsd/core/"
+	xsi:schemaLocation="http://privatefunction.net/playground/di/xsd/core/ http://privatefunction.net/playground/di/xsd/core/core.xsd ">
+	
+	<factory>
+		<object id="exampleMediaTask" class="cs.unit.test.examples.ExampleMediaTask">
+			<mediaTask method="addPath">				<!-- method:Method name for injection of values at Object -->
+				<array>media/mp4/boxplus.mp4</array>
+				<array>media/mp4/boxplus.mp4</array>
+				<array>media/mp4/boxplus.mp4</array>
+				<array>media/mp4/boxplus.mp4</array>
+			</mediaTask>
+		</object>
+	</factory>
+</context>

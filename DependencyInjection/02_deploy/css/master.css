@@ -1,0 +1,32 @@
+@charset "UTF-8";
+/*-----style reset-----*/
+html, body, div, h1, h2, h3, h4, p, ul, ol, li, dl, dt, dd, form, fieldset, input, textarea, blockquote, pre, code {margin: 0; padding: 0; border:0; }
+img, fieldset, input, textarea { border: 0;}
+:focus { outline: 0; }
+em { font-style: italic; }
+strong { font-weight: bold; } 
+ul { list-style: none; } 
+h1, h2, h3, h4 { font-size:16px; font-weight: normal; }
+
+
+/*-----page frame-----*/
+body {
+	color:#dedede; background-color:#000000;
+	font-size:16px;; font-family:Arial, Helvetica, sans-serif; text-decoration:none;
+	margin: 0;
+	text-align:center;
+	margin:0px 0px; padding:0px;
+}
+/*------- comon-------*/
+#wrapper {
+	margin:0px auto;
+}
+/*---- entry page ----*/
+#languageselection { margin-top:120px; }
+#languageselection img{ margin-bottom:18px;}
+#languageselection li { display: inline; list-style-type: none; padding-right: 26px; }
+#languageselection li a{ font-size:46px; text-decoration:none; color:#3e3c39; }
+/*--- flash div ----*/
+#flashcontent { text-align:center; margin-top:20px;}
+#flashcontent h1{ text-align:center;}
+#flashcontent a{ text-decoration:none; color:#333;}
